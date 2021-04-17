@@ -1,0 +1,152 @@
+<html>
+    <head><title>Lojinha</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+    <h2>Vitrine</h2>
+
+        <div id="produtos">
+
+        </div><!--produtos-->
+
+    <h2>Carrinho</h2>
+
+        <div id="carrinho">
+
+        </div><!--carrinho-->
+
+        <style>
+            *{
+                font-family: 'Lato', sans-serif;
+                margin:0;
+                padding:0;
+                box-sizing: border-box;
+            }
+            h2{
+                background-color: #D2691E;
+                padding: 10px 0;
+                text-align: center;
+                color: white;
+            }
+            #produtos{
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 0 2%;
+                margin: auto;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            #carrinho{
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 0 2%;
+                display: block;
+            }
+            .produto-single{
+                width: 32%;
+                margin-right: 1%;
+                border: 1px solid #ccc;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            .produto-single img{
+                max-width: 100%;
+            }
+            .produto-single p{
+                text-align: center;
+                font-size: 16px;
+                padding: 10px;
+            }
+            .produto-single a{
+                display: block;
+                text-align: center;
+                text-decoration: none;
+                color: white;
+                background-color:#32CD32;
+                padding: 4px 0;
+                font-size: 18px;
+            }
+            .info-single-checkout{
+                border-bottom: 2px dotted;
+                padding: 10px 0;
+            }
+            @media screen and (max-width: 768px) {
+                .produto-single{
+                    width: 1000px;
+                    margin-right: 0;
+                }
+            }
+
+        </style> 
+
+        <script>
+
+             const items = [
+                {
+                    id: 0,
+                    nome: 'camisa burberry',
+                    img: 'camisa.jfif',
+                    quantidade: 0
+                },
+                {
+                    id: 1,
+                    nome: 'boné burberry',
+                    img: 'boné.jfif',
+                    quantidade: 0
+                },
+                {
+                    id: 2,
+                    nome: 'bermuda burberry',
+                    img: 'bermuda2.jfif',
+                    quantidade: 0
+                },
+             ]   
+
+             inicializarLoja = () => {
+                 var conteinerProdutos = document.getElementById('produtos');
+                 items.map((val)=>{
+                    conteinerProdutos.innerHTML += `
+
+                    <div class="produto-single">
+                    <img src=`+val.img+` />
+                    <p>`+val.nome+`</p>
+                    <a key="`+val.id+`" href="#"> Adicionar ao carrinho!</a>
+                    </div>
+
+                    `;
+                 })
+             }
+
+             inicializarLoja();
+
+             atualizarCarrinho = () =>{
+                var conteinerCarrinho = document.getElementById('carrinho');
+                conteinerCarrinho.innerHTML = "";
+                items.map((val)=>{
+                    if(val.quantidade > 0){
+                    conteinerCarrinho.innerHTML += `
+                    <div class="info-single-checkout">
+                    <p style="flot:left;"> produto:  `+val.nome+`</p>
+                    <p style="flot:right;"> quantidade:  `+val.quantidade+`</p>
+                    <div style="clear:both"></div>
+                    </div>
+                    `;
+                    }
+                 })
+             }
+                 
+            var links = document.getElementsByTagName('a');
+
+            for(var i = 0; i < links.length; i++){
+                links[i].addEventListener("click",function(){
+                    let key = this.getAttribute('key');
+                    items[key].quantidade++;
+                    atualizarCarrinho();
+                    return false;
+                })
+            }
+        </script>
+    </body>
+</html>
