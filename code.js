@@ -1,19 +1,19 @@
 const items = [{
         id: 0,
         nome: 'Camisa basica preta',
-        img: './Assets/camisaPreta.jpeg',
+        img: './Assets/camisaPreta.png',
         quantidade: 0
     },
     {
         id: 1,
         nome: 'Camisa basica laranja',
-        img: './Assets/camisaLaranja.jpeg',
+        img: './Assets/camisaLaranja.png',
         quantidade: 0
     },
     {
         id: 2,
         nome: 'Camisa basica branca',
-        img: './Assets/camisaBranca.jpeg',
+        img: './Assets/camisaBranca.png',
         quantidade: 0
     },
 ]
